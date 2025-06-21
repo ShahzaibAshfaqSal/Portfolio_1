@@ -14,23 +14,20 @@
     </head>
      <body>
         <script src = "script.js"></script>
-        <header class = "header">
-        <a href = "#" class = "logo">Shahzaib</a>
-
-        <i class="fa-sharp fa-solid fa-bars"></i>
-
-        <nav class="navbar">
-            <a href = "#home" class = "active">Home</a>
-            <a href = "#services">Services</a>
-            <a href = "#skills">Skills</a>
-            <a href = "#education">Education</a>
-            <a href = "#experience">Experience</a>
-            <a href = "#projects">Projects</a>
-            <a href = "#resume">Resume</a>
-            <a href = "#contact">Contact</a>
-        </nav>
-
-    </header>
+<header class="header">
+    <a href="#home" class="logo">Shahzaib</a>
+    <span id="menu-icon" class="fa-solid fa-bars" data-toggle="navbar"></span>
+    <nav class="navbar" id="navbar">
+        <a href="#home" class="active">Home</a>
+        <a href="#services">Services</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
 
     <section class="home" id="home">
         <div class="home-img">
@@ -240,20 +237,20 @@
 </section>
 
 <!-- Section Contact -->
-
-    <section class="contact" id="contact">
-     <h2 class="heading">Contact <span>Me</span></h2>
-     <form action = "">
-        <div class = "input-box">
-            <input type = "text" name = "name" placeholder = "Name" required>
-            <input type = "email" placeholder = "E-mail" required>
-            <input type = "Number" placeholder = "phone-number" required>
-            <input type = "text" placeholder = "Subject" required>
+<section class="contact" id="contact">
+    <h2 class="heading">Contact <span>Me</span></h2>
+    <form id="contact-form" novalidate>
+        <div class="input-box">
+            <input type="text" id="name" name="name" placeholder="Full Name" required>
+            <input type="email" id="email" name="email" placeholder="E-mail" required>
+            <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+            <input type="text" id="subject" name="subject" placeholder="Subject" required>
         </div>
-       <textarea name="" id="" class="" cols = "30" rows = "10" placeholder = "Your Message "></textarea>
-       <input type = "submit" value = "Send Message" class = "btn">
-     </form>
-    </section>
+        <textarea id="message" name="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
+        <input type="submit" value="Send Message" class="btn">
+        <div id="form-message" class="form-message"></div>
+    </form>
+</section>
 
 
 
