@@ -55,28 +55,79 @@ document.getElementById('contact-form').addEventListener('submit', function(even
 });
 
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded. Initializing resume section at 10:53 AM PKT, June 21, 2025.');
+
     const viewButton = document.querySelector('#view-resume');
     const downloadButton = document.querySelector('#download-resume');
     const preview = document.querySelector('.resume-preview');
 
-    if (!viewButton || !preview || !downloadButton) {
-        console.error('Resume elements not found:', { viewButton, preview, downloadButton });
+    // Check for element existence
+    if (!viewButton) console.error('Error: #view-resume button not found in DOM.');
+    if (!downloadButton) console.error('Error: #download-resume link not found in DOM.');
+    if (!preview) console.error('Error: .resume-preview element not found in DOM.');
+    if (!viewButton || !downloadButton || !preview) {
+        console.error('Resume section initialization failed due to missing elements.');
         return;
     }
 
+    // Initialize preview state
+    preview.classList.remove('active'); // Ensure preview is hidden on load
+    console.log('Resume preview initialized as hidden.');
+
     // Handle View Resume button
-    viewButton.addEventListener('click', function() {
+    viewButton.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent any default behavior
         const isActive = preview.classList.contains('active');
         preview.classList.toggle('active');
-        console.log(`Resume preview toggled: ${isActive ? 'hidden' : 'shown'}`);
+        console.log(`View Resume clicked. Preview is now: ${isActive ? 'hidden' : 'shown'}`);
+        viewButton.textContent = isActive ? 'View Resume' : 'Hide Resume';
     });
 
     // Handle Download Resume button
     downloadButton.addEventListener('click', function(event) {
-        console.log('Download Resume clicked');
-        // Download is handled natively by the <a> tag's download attribute
+        console.log('Download Resume clicked. Native download triggered.');
+        // No programmatic click needed; <a download> handles it
     });
 
-    // Prevent any automatic download on page load
+    // Prevent automatic download on load
     console.log('Resume section initialized. No automatic download triggered.');
+});
+
+// header 
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded. Initializing header at 12:00 PM PKT, June 21, 2025.');
+
+    const menuIcon = document.querySelector('#menu-icon');
+    const navbar = document.querySelector('#navbar');
+
+    if (!menuIcon || !navbar) {
+        console.error('Header elements not found:', { menuIcon, navbar });
+        return;
+    }
+
+    // Initialize navbar state
+    navbar.classList.remove('active');
+    menuIcon.classList.remove('active');
+    console.log('Navbar initialized as hidden.');
+
+    // Toggle menu
+    menuIcon.addEventListener('click', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        navbar.classList.toggle('active');
+        menuIcon.classList.toggle('active');
+        console.log(`Hamburger menu toggled: ${navbar.classList.contains('active') ? 'opened' : 'closed'}`);
+        console.log('Navbar classes:', navbar.className);
+        console.log('Navbar style:', window.getComputedStyle(navbar).maxHeight);
+    });
+
+    // Close menu on link click
+    navbar.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function(event) {
+            console.log(`Navbar link clicked: ${link.getAttribute('href')}`);
+            navbar.classList.remove('active');
+            menuIcon.classList.remove('active');
+            console.log('Menu closed.');
+        });
+    });
 });
