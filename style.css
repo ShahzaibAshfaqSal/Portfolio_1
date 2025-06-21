@@ -1160,3 +1160,10 @@ flex-wrap:wrap;
         height: 300px;
     }
 }
+    .resume-btn:hover {
+    animation: pulseGlow 1.5s infinite, bounce 0.3s ease;
+}
+@keyframes bounce {
+    0%, 100% { transform: scale(1.05); }
+    50% { transform: scale(1.1); }
+}
